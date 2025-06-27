@@ -41,19 +41,29 @@ function App() {
   return (
     <div className="container">
       <h1>My ToDo list</h1>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Enter a new todo..."
-        onKeyDown={handleKeyPress}
-      />
-      <button onClick={addTodo}>Add Todo</button>
-      <ul>
+      <div className="input-section">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={handleKeyPress}
+          placeholder="Enter a new todo..."
+          className="todo-input"
+        />
+        <button onClick={addTodo} className="add-button">
+          Add Todo
+        </button>
+      </div>
+      <ul className="todo-list">
         {todos.map((todo) => (
-          <li key={todo.id}>
-            {todo.text}{" "}
-            <button onClick={() => removeTodo(todo.id)}>Remove</button>
+          <li key={todo.id} className="todo-item">
+            <span className="todo-text">{todo.text}</span>
+            <button
+              onClick={() => removeTodo(todo.id)}
+              className="remove-button"
+            >
+              Remove
+            </button>
           </li>
         ))}
       </ul>
