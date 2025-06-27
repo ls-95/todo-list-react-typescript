@@ -26,6 +26,10 @@ function App() {
     }
   };
 
+  const removeTodo = (todoId: number): void => {
+    setTodos(todos.filter((todo) => todo.id !== todoId));
+  };
+
   return (
     <div className="container">
       <h1>My ToDo list</h1>
@@ -38,7 +42,10 @@ function App() {
       <button onClick={addTodo}>Add Todo</button>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>{todo.text}</li>
+          <li key={todo.id}>
+            {todo.text}{" "}
+            <button onClick={() => removeTodo(todo.id)}>Remove</button>
+          </li>
         ))}
       </ul>
     </div>
