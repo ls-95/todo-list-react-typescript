@@ -30,6 +30,14 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== todoId));
   };
 
+  const handleKeyPress = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ): void => {
+    if (event.key === "Enter") {
+      addTodo();
+    }
+  };
+
   return (
     <div className="container">
       <h1>My ToDo list</h1>
@@ -38,6 +46,7 @@ function App() {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Enter a new todo..."
+        onKeyDown={handleKeyPress}
       />
       <button onClick={addTodo}>Add Todo</button>
       <ul>
